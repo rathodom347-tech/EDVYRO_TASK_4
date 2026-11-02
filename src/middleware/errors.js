@@ -1,0 +1,2 @@
+export function notFound(req,res){res.status(404).json({success:false,error:{code:'NOT_FOUND',message:`No route for ${req.method} ${req.originalUrl}`}});}
+export function errorHandler(err,_req,res,_next){console.error(JSON.stringify({level:'error',message:err.message,time:new Date().toISOString()}));res.status(err.status||500).json({success:false,error:{code:'INTERNAL_ERROR',message:err.status?err.message:'Unexpected server error'}});}
